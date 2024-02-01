@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, {useState} from "react";
 import { CardContent, Card } from "@/components/ui/card";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,10 @@ interface bannerProps {
 }
 
 export const Banner: React.FC<bannerProps> = ({ userName, userAvatar }) => {
-  const [pytle, setPytle] = React.useState<number>(0);
+  const [pytle, setPytle] = useState<number>(0);
+  const options = ["(GAY) Mini Berry Frost", "Freeze X-Strong", "Ice Cool Strong"];
+  const [selectedOption, setSelectedOption] = useState(options[0]);
+
   const pytleNaming =
     pytle === 1
       ? "Pytel"
@@ -27,14 +30,24 @@ export const Banner: React.FC<bannerProps> = ({ userName, userAvatar }) => {
   };
 
   return (
-    <Card className="max-w-lg w-96 h-1/2 bg-gray-200 shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-200 ease-in">
-      <CardContent className="flex flex-col items-center justify-center gap-4 h-full">
-        <Avatar className="w-48 h-48">
-          <Image alt="User 1" src={userAvatar} width={500} height={500} />
+    <Card className="max-w-lg w-96 h-1/2 bg-gray-200 shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-200 ease-in border border-gray-300">
+      <CardContent className="flex flex-col items-center justify-center gap-4 h-full pt-5">
+        <Avatar className="w-24 h-24 md:w-24 md:h-24 lg:w-32 lg:h-32">
+          <Image alt="User 1" src={userAvatar} width={500} height={500}/>
         </Avatar>
         <h2 className="text-xl font-bold">{userName}</h2>
         <div className="flex items-center gap-2">
-          <span className="text-lg font-bold text-black">(TYPE) Puk</span>
+          <select
+            value={selectedOption}
+            onChange={(e) => setSelectedOption(e.target.value)}
+            className="text-lg font-bold text-black"
+          >
+            {options.map((option) => (
+              <option key={option} value={option} className="text-center">
+                {option}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-lg font-bold text-black">

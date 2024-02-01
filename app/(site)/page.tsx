@@ -11,7 +11,7 @@ export default function Component() {
   return (
     <>
       <h1 className="text-4xl font-bold text-center mb-8">VELO WARRIORS</h1>
-      <main className="flex flex-wrap justify-center items-center p-4 gap-8 h-screen">
+      <main className="flex flex-wrap justify-center items-center p-4 mb-24 gap-8 h-screen">
         {warriors.map((warrior) => (
           <Banner userName={warrior.name} userAvatar={warrior.avatar} />
         ))}
