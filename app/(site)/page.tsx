@@ -1,14 +1,10 @@
 "use client";
 
 import { Banner } from "@/components/ui/banner";
-import { useEffect, useState } from "react";
 import { usePytleStore } from "@/store/warriorStore";
 
 export default function Component() {
-
-
   const warriors = usePytleStore((state) => state.warriors);
-
 
   return (
     <>
@@ -18,6 +14,7 @@ export default function Component() {
       <main className="flex flex-wrap justify-center items-center p-4 mb-24 gap-8 h-screen">
         {warriors.map((warrior) => (
           <Banner
+            key={warrior.name}
             userName={warrior.name}
             userAvatar={warrior.avatar}
           />

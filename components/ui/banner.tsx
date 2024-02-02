@@ -44,14 +44,14 @@ export const Banner: React.FC<bannerProps> = ({ userName, userAvatar }) => {
     increasePytle(userName);
   };
 
-  useEffect(() => {
-    const today = new Date().getDate();
-    if (today !== currentDay) {
-      setIsWinner(checkWinner() || undefined);
-      resetWarriors();
-      setCurrentDay(today);
-    }
-  }, [currentDay, resetWarriors, setCurrentDay]);
+  // useEffect(() => {
+  //   const today = new Date().getDate();
+  //   if (today !== currentDay) {
+  //     setIsWinner(checkWinner() || undefined);
+  //     resetWarriors();
+  //     setCurrentDay(today);
+  //   }
+  // }, [currentDay, resetWarriors, setCurrentDay]);
 
   return (
     <Card
