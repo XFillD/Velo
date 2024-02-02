@@ -23,14 +23,11 @@ export const usePytleStore = create<Store>((set, get) => ({
   ],
   increasePytle: (name) =>
     set((state) => {
-      const warriors = state.warriors.map((warrior) => {
-        if (warrior.name === name) {
-          const newPytle = warrior.pytle + 1;
-          localStorage.setItem(`${name}_pytle`, String(newPytle));
-          return { ...warrior, pytle: newPytle };
-        }
-        return warrior;
-      });
+      const warriors = state.warriors.map((warrior) =>
+        warrior.name === name
+          ? { ...warrior, pytle: warrior.pytle + 1 }
+          : warrior
+      );
       return { warriors };
     }),
   checkWinner: () => {

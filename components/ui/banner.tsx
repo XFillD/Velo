@@ -53,6 +53,12 @@ export const Banner: React.FC<bannerProps> = ({ userName, userAvatar }) => {
   //   }
   // }, [currentDay, resetWarriors, setCurrentDay]);
 
+  useEffect(() => {
+    warriors.forEach((warrior) => {
+      localStorage.setItem(`${warrior.name}_pytle`, String(warrior.pytle));
+    });
+  }, [warriors]);
+
   return (
     <Card
       className="max-w-lg w-96 h-1/2 bg-gray-200 shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-200 ease-in border border-gray-300"
