@@ -14,7 +14,6 @@ interface bannerProps {
 
 export const Banner: React.FC<bannerProps> = ({ userName, userAvatar }) => {
   const warriors = usePytleStore((state) => state.warriors);
-  const warrior = warriors.find((w) => w.name === userName);
   const increasePytle = usePytleStore((state) => state.increasePytle);
   const [selectedOption, setSelectedOption] = useState("");
   const [currentDay, setCurrentDay] = useState(new Date().getDate());
@@ -26,6 +25,14 @@ export const Banner: React.FC<bannerProps> = ({ userName, userAvatar }) => {
     "Freeze X-Strong",
     "Ice Cool Strong",
   ];
+
+  useEffect(() => {
+    warriors.forEach((warrior) => {
+      localStorage.setItem(`${warrior.name}_pytle`, String(warrior.pytle));
+    });
+  }, [warriors]);
+
+  const warrior = warriors.find((w) => w.name === userName);
 
   if (!warrior) {
     return <div>No warrior found</div>;
@@ -52,12 +59,6 @@ export const Banner: React.FC<bannerProps> = ({ userName, userAvatar }) => {
   //     setCurrentDay(today);
   //   }
   // }, [currentDay, resetWarriors, setCurrentDay]);
-
-  useEffect(() => {
-    warriors.forEach((warrior) => {
-      localStorage.setItem(`${warrior.name}_pytle`, String(warrior.pytle));
-    });
-  }, [warriors]);
 
   return (
     <Card
