@@ -92,14 +92,13 @@ export const Banner: React.FC<bannerProps> = ({ userName, userAvatar }) => {
             {warrior.pytle} {pytleName}
           </span>
         </div>
-        <Button
-          className="w-14 h-14 rounded-full"
-          size="lg"
+        <button
+          className="w-14 h-14 rounded-full bg-black text-white text-2xl"
           onClick={pytleCounter}
           style={{ fontSize: "1.5rem" }}
         >
           +
-        </Button>
+        </button>
         <div className="w-full h-8 bg-gray-400 rounded relative">
           <div
             className="h-full bg-red-500 transition-all duration-500 ease-in-out rounded"
