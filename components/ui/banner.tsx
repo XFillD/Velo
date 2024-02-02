@@ -25,13 +25,6 @@ export const Banner: React.FC<bannerProps> = ({ userName, userAvatar }) => {
     "Freeze X-Strong",
     "Ice Cool Strong",
   ];
-
-  useEffect(() => {
-    warriors.forEach((warrior) => {
-      localStorage.setItem(`${warrior.name}_pytle`, String(warrior.pytle));
-    });
-  }, [warriors]);
-
   const warrior = warriors.find((w) => w.name === userName);
 
   if (!warrior) {

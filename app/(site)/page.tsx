@@ -2,12 +2,13 @@
 
 import { Banner } from "@/components/ui/banner";
 import { usePytleStore } from "@/store/warriorStore";
+import HydrationZustand from "@/zustand/HydrationZustand";
 
 export default function Component() {
   const warriors = usePytleStore((state) => state.warriors);
 
   return (
-    <>
+    <HydrationZustand>
       <h1 className="text-4xl font-bold text-center mb-8">
         VELO WARRIORS (Alpha 1.0)
       </h1>
@@ -20,6 +21,6 @@ export default function Component() {
           />
         ))}
       </main>
-    </>
+    </HydrationZustand>
   );
 }
